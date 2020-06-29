@@ -1,0 +1,67 @@
+{
+  "name": "coc-git-complete",
+  "version": "0.1.0",
+  "description": "GitHub issue Completer for CoC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "coc",
+    "git",
+    "github"
+  ],
+  "author": "Harsha Narayana",
+  "license": "MIT",
+  "activationEvents": [
+    "onLanguage:gitcommit",
+    "onCommand:gh.issues"
+  ],
+  "engines": {
+    "coc": ">=0.0.57"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "title": "Fetch a list of GitHub issues",
+        "category": "gh",
+        "command": "gh.issues"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "gh.user": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub User Name"
+        },
+        "gh.token": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Access token to use for fetching Issues"
+        },
+        "gh.mineOnly": {
+          "type": "boolean",
+          "default": true,
+          "description": "Filter only those GitHub issues assigned to me"
+        },
+        "gh.repos": {
+          "type": "array",
+          "default": [],
+          "description": "List of GitHub Repositories to watch. Used only if gh.mineOnly is false",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.0.0",
+    "coc.nvim": "0.0.77"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
